@@ -55,7 +55,7 @@ const userSignUp = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             maxAge: 24 * 60 * 60 * 1000,
-            sameSite: "Strict",
+            sameSite: "none",
         });
         res.status(201).json({ message: "User created successfully" });
     } catch (error) {
@@ -87,7 +87,7 @@ const userLogin = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             maxAge: 24 * 60 * 60 * 1000,
-            sameSite: "Strict",
+            sameSite: "none",
         });
         res.status(200).json({ message: "Login successful" });
     } catch (err) {
@@ -101,7 +101,7 @@ const userLogout = (req, res) => {
     res.clearCookie("authToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "Strict",
+        sameSite: "none",
     });
 
     res.status(200).json({message: "Logout successful"});
